@@ -111,7 +111,7 @@ module.exports = (robot) ->
 
           picked_url = url.format(parsed_url)
 
-        msg.send "<#{picked_url}|#{picked_title}>"
+        msg.send "#{picked_title} #{picked_url}"
   
   
   robot.respond /(dance|happy)/i, (msg) ->
