@@ -61,7 +61,7 @@ module.exports = (robot) ->
   #
   #       robot.logger.debug "hubot-sentimental: #{username} now has #{sent[username].score} / #{sent[username].average}"
 
-  robot.respond /wine ?(.*)/i, (msg) ->
+  robot.respond /wine (.*)/i, (msg) ->
     text = msg.match[2]
     username = msg.message.user.name
     
@@ -73,8 +73,7 @@ module.exports = (robot) ->
     second = msg.random ["Twenty bucks on *this*:",
                          "_Listen to this:_",
                          "Go ahead. *GET TOTALLY NUTS:*",
-                         "... `wait for it` ...",
-                         ""]
+                         "... `wait for it` ..."]
     
     msg.send intro
     msg.send second
