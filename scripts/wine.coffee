@@ -79,8 +79,7 @@ module.exports = (robot) ->
     msg.send intro
     msg.send second
     if text
-      tokenizer = natural.WordTokenizer.tokenize
-      msg.send tokenizer text
+      msg.send text
     
 
 
