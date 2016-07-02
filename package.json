@@ -32,7 +32,8 @@
     "redis": ">= 0.10.0",
     "coffee-script": "~1.6",
     "timeago": "^0.1.0",
-    "flip": "~0.1.0"
+    "flip": "~0.1.0",
+    "natural": ">=0.4.0"
   },
   "engines": {
     "node": "0.10.x"

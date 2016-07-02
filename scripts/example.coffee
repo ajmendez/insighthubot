@@ -90,16 +90,19 @@ module.exports = (robot) ->
         result = JSON.parse(body)
 
         urls = [ ]
+        titles = [ ]
         for child in result.data.children
-          if child.data.domain != "self.aww"
+          if child.data.domain != "self.BatFacts"
             urls.push(child.data.url)
+            titles.push(child.data.title)
 
         if urls.count <= 0
-          msg.send "Couldn't find anything cute..."
+          msg.send "Couldn't find a bat fact..."
           return
 
         rnd = Math.floor(Math.random()*urls.length)
         picked_url = urls[rnd]
+        picked_title = titles[rnd]
 
         parsed_url = url.parse(picked_url)
         if parsed_url.host == "imgur.com"
@@ -108,7 +111,7 @@ module.exports = (robot) ->
 
           picked_url = url.format(parsed_url)
 
-        msg.send picked_url
+        msg.send "<#{picked_url}|#{picked_title}>"
   
   
   robot.respond /(dance|happy)/i, (msg) ->
