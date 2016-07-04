@@ -27,6 +27,8 @@
 #
 #   These are from the scripting documentation: https://github.com/github/hubot/blob/master/docs/scripting.md
 
+
+nrerelic = require('newrelic')
 url = require("url")
 flip = require("flip")
 
