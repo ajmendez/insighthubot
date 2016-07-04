@@ -83,7 +83,7 @@ module.exports = (robot) ->
 
         msg.send picked_url
   
-  robot.respond /fact/i, (msg) ->
+  robot.respond /fact/, (msg) ->
     search = escape(msg.match[1])
     msg.http('http://www.reddit.com/r/BatFacts.json')
       .get() (err, res, body) ->
@@ -120,7 +120,12 @@ module.exports = (robot) ->
       "http://web.archive.org/web/20121119111926/http://3deadmonkeys.com/gallery3/var/albums/random_stuff/Carlton-Dance-GIF.gif",
       "http://gifsoup.com/webroot/animatedgifs/987761_o.gif",
       "http://s2.favim.com/orig/28/carlton-banks-dance-Favim.com-239179.gif",
-      "http://gifsoup.com/webroot/animatedgifs/131815_o.gif"
+      "http://gifsoup.com/webroot/animatedgifs/131815_o.gif",
+      "Do the :thejerbear:",
+      "Do the :thejerbear:",
+      "Do the :thejerbear:",
+      "Do the :thejerbear:",
+      "Do the :thejerbear:"
     ]
     
     msg.send msg.random carltons
@@ -137,6 +142,9 @@ module.exports = (robot) ->
               	msg.send "Unable to get cat facts right now."
   
     robot.respond /kitten me/i, (msg) ->
+      msg.send kittenMe()
+
+    robot.respond /kitten/i, (msg) ->
       msg.send kittenMe()
 
     robot.respond /kitten me (\d+)(?:[x ](\d+))?$/i, (msg) ->
@@ -176,7 +184,7 @@ module.exports = (robot) ->
     toFlip = (msg.match[2] || '').trim()
 
     if toFlip == 'me'
-      toFlip = msg.message.user.name
+      toFlip = "@" + msg.message.user.name
 
     if toFlip == ''
       flipped = '┻━┻'
@@ -190,7 +198,7 @@ module.exports = (robot) ->
     toUnflip = (msg.match[1] || '').trim()
 
     if toUnflip == 'me'
-      unflipped = msg.message.user.name
+      unflipped = "@" + msg.message.user.name
     else if toUnflip == ''
       unflipped = '┬──┬'
     else
