@@ -136,10 +136,10 @@ module.exports = (robot) ->
               else
               	msg.send "Unable to get cat facts right now."
   
-    robot.respond /kitten?(?: me)?$/i, (msg) ->
+    robot.respond /kitten me/i, (msg) ->
       msg.send kittenMe()
 
-    robot.respond /kitten?(?: me)? (\d+)(?:[x ](\d+))?$/i, (msg) ->
+    robot.respond /kitten me (\d+)(?:[x ](\d+))?$/i, (msg) ->
       msg.send kittenMe msg.match[1], (msg.match[2] || msg.match[1])
 
     robot.respond /kitten bomb(?: me)?( \d+)?$/i, (msg) ->
