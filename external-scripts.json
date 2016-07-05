@@ -1,5 +1,6 @@
 [
   "hubot-heroku-keepalive",
   "hubot-redis-brain",
+  "hubot-newrelic2",
   "hubot-soon"
 ]

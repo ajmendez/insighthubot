@@ -34,7 +34,8 @@
     "timeago": "^0.1.0",
     "flip": "~0.1.0",
     "natural": ">=0.4.0",
-    "newrelic": ">=0.0.0"
+    "newrelic": ">=0.0.0",
+    "hubot-newrelic2": "^0.2.0"
   },
   "engines": {
     "node": "0.10.x"
