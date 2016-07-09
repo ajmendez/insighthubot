@@ -205,8 +205,8 @@ module.exports = (robot) ->
 
     msg.send "#{unflipped} ノ( º _ ºノ)"
   
-  robot.respond /kitten me/i, (msg) ->
-      msg.send kittenMe()
+  # robot.respond /kitten me/i, (msg) ->
+  #     msg.send kittenMe()
     
   robot.respond /kittens?(?: me)?$/i, (msg) ->
     msg.send kittenMe()
