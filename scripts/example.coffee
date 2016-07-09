@@ -45,6 +45,22 @@ module.exports = (robot) ->
          msg.reply body
   
   
+  robot.hear /spoon/, (res) ->
+    spoons = ["http://i.imgur.com/47n9l.jpg",
+              "http://i.imgur.com/47n9l.jpg",
+              "http://i.imgur.com/47n9l.jpg",
+              "http://i.imgur.com/47n9l.jpg",
+              "http://i.imgur.com/47n9l.jpg",
+              "http://i.imgur.com/47n9l.jpg",
+              "http://i.imgur.com/47n9l.jpg",
+              "https://66.media.tumblr.com/a41e0f5ca59b94f00ab0df2e21902462/tumblr_mjxnjxsUPO1rabxd4o1_500.jpg",
+              "https://img0.etsystatic.com/072/1/10011086/il_214x170.811358134_gi3m.jpg",
+              "http://lusaorganics.typepad.com/.a/6a010535f3a090970c01b7c7f03f50970b-640wi",
+              "https://www.zagat.com/proxy/v1.4?m=image&a=resize&url=https%3A//storage.googleapis.com/zgt-user/philly-littlespoon.jpg&width=640&height=360&key=abbc09b7c840c10937a4db331422c98b",
+              "Hey Insight have you thought about this: http://editorial.designtaxi.com/editorial-images/news-ediblespoonmaker190216/2-Edible-Spoon-Maker.jpg"
+            ]
+    res.send msg.random spoons
+  
   robot.hear /bat simplefact/i, (msg) ->
     facts = [
         "Bats can live more than 30 years and can fly at speeds of up to 60 mph. http://www.nature.org/cs/groups/webcontent/@photopublic/documents/media/free-tailed-bats-940x550.jpg",
