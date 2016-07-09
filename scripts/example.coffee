@@ -40,13 +40,14 @@ module.exports = (robot) ->
     res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
   
   robot.hear /spoon/i, (msg) ->
-    spoons = ["http://i.imgur.com/47n9l.jpg",
-              "http://i.imgur.com/47n9l.jpg",
-              "http://i.imgur.com/47n9l.jpg",
-              "http://i.imgur.com/47n9l.jpg",
-              "http://i.imgur.com/47n9l.jpg",
-              "http://i.imgur.com/47n9l.jpg",
-              "http://i.imgur.com/47n9l.jpg"#,
+    spoons = ["http://images-cdn.9gag.com/photo/azb7Lxb_700b.jpg"
+    # "http://i.imgur.com/47n9l.jpg",
+    #           "http://i.imgur.com/47n9l.jpg",
+    #           "http://i.imgur.com/47n9l.jpg",
+    #           "http://i.imgur.com/47n9l.jpg",
+    #           "http://i.imgur.com/47n9l.jpg",
+    #           "http://i.imgur.com/47n9l.jpg",
+    #           "http://i.imgur.com/47n9l.jpg",
               # "https://66.media.tumblr.com/a41e0f5ca59b94f00ab0df2e21902462/tumblr_mjxnjxsUPO1rabxd4o1_500.jpg",
               # "https://img0.etsystatic.com/072/1/10011086/il_214x170.811358134_gi3m.jpg",
               # "http://lusaorganics.typepad.com/.a/6a010535f3a090970c01b7c7f03f50970b-640wi",
