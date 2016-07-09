@@ -43,17 +43,17 @@ module.exports = (robot) ->
     user = msg.match[3]
 
     praise = [
-        "Keep on rocking, #{user}!",
-        "Keep up the great work, #{user}!",
-        "You're awesome, #{user}!",
-        "You're doing good work, #{user}!" # Original and inspiration
+        "Keep on rocking, @#{user}!",
+        "Keep up the great work, @#{user}!",
+        "You're awesome, @#{user}!",
+        "You're doing good work, @#{user}!" # Original and inspiration
         ]
 
     msg.send msg.random praise
 
   robot.hear /^(high five|bat five)$/i, (msg) ->
       username = msg.message.user.name
-      msg.send "high five #{username}!"
+      msg.send "high five @#{username}!"
       
       
       client.get "sent:fiveScore", (err, reply) ->
@@ -85,25 +85,25 @@ module.exports = (robot) ->
       
     user = user.name
     fives = [
-        "high fives #{user}!",
-        "high fives #{user}!",
-        "high fives #{user}!",
-        "high fives #{user}!",
-        "high fives #{user}!",
-        "high fives #{user}!",
-        "high fives #{user}!",
-        "high fives #{user}!",
-        "high fives #{user}!",
-        "air fives #{user}!",
-        "Wi fi's #{user}!",
-        "requests the highest of fives from #{user}",
-        "gives #{user} the highest of fives",
-        "gives #{user} some skin",
-        "engages #{user} in an air five. https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/HFE_Air_Five.JPG/220px-HFE_Air_Five.JPG",
-        "Up High #{user}! https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/HFE_Too_Slow_1.JPG/120px-HFE_Too_Slow_1.JPG",
-        "Down Low #{user}! https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/HFE_Too_Slow_2.JPG/120px-HFE_Too_Slow_2.JPG",
-        "Victim #{user} misses! https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/HFE_Too_Slow_3.JPG/120px-HFE_Too_Slow_3.JPG",
-        "Too slow #{user}! (with finger-guns) https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/HFE_Too_Slow_4.JPG/120px-HFE_Too_Slow_4.JPG"
+        "high fives @#{user}!",
+        "high fives @#{user}!",
+        "high fives @#{user}!",
+        "high fives @#{user}!",
+        "high fives @#{user}!",
+        "high fives @#{user}!",
+        "high fives @#{user}!",
+        "high fives @#{user}!",
+        "high fives @#{user}!",
+        "air fives @#{user}!",
+        "Wi fi's @#{user}!",
+        "requests the highest of fives from @#{user}",
+        "gives @#{user} the highest of fives",
+        "gives @#{user} some skin",
+        "engages @#{user} in an air five. https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/HFE_Air_Five.JPG/220px-HFE_Air_Five.JPG",
+        "Up High @#{user}! https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/HFE_Too_Slow_1.JPG/120px-HFE_Too_Slow_1.JPG",
+        "Down Low @#{user}! https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/HFE_Too_Slow_2.JPG/120px-HFE_Too_Slow_2.JPG",
+        "Victim @#{user} misses! https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/HFE_Too_Slow_3.JPG/120px-HFE_Too_Slow_3.JPG",
+        "Too slow @#{user}! (with finger-guns) https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/HFE_Too_Slow_4.JPG/120px-HFE_Too_Slow_4.JPG"
         ]
     
     msg.emote msg.random fives
@@ -129,7 +129,7 @@ module.exports = (robot) ->
       
   robot.respond /fivescore (.*)/i, (msg) ->
     username = msg.match[1]
-    msg.emote "FS #{username}"
+    # msg.emote "FS @#{username}"
     client.get "sent:fiveScore", (err, reply) ->
       if err
         robot.emit 'error', err
@@ -137,11 +137,11 @@ module.exports = (robot) ->
         # msg.emote reply.toString()
         sent = JSON.parse(reply.toString())
         if username != "everyone" and (!sent[username] or sent[username].given == undefined)
-          msg.send "#{username} has no data"
+          msg.send "@#{username} has no data"
         else
           for user, data of sent
             if (user == username or username == "everyone") and data.given != undefined
-              msg.send "#{user}: \t\t Fives given: #{data.given} and Fives received: #{data.received}"
+              msg.send "@#{user}: \t\t Fives given: #{data.given} and Fives received: #{data.received}"
       else
         msg.send "I haven't collected data on anybody yet"
    

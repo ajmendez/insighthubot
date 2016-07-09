@@ -159,32 +159,9 @@ module.exports = (robot) ->
               # passes back the complete reponse
               response = JSON.parse(body)
               if response.success == "true"
-              	msg.send response.facts[0]
+              	response.send response.facts[0]
               else
-              	msg.send "Unable to get cat facts right now."
-  
-    robot.respond /kitten me/i, (msg) ->
-      msg.send kittenMe()
-
-    # robot.respond /kitten/i, (msg) ->
-    #   msg.send kittenMe()
-    #
-    # robot.respond /kitten me (\d+)(?:[x ](\d+))?$/i, (msg) ->
-    #   msg.send kittenMe msg.match[1], (msg.match[2] || msg.match[1])
-    #
-    # robot.respond /kitten bomb(?: me)?( \d+)?$/i, (msg) ->
-    #   kittens = msg.match[1] || 5
-    #   msg.send(kittenMe()) for i in [1..kittens]
-
-  kittenMe = (height, width)->
-    h = height ||  Math.floor(Math.random()*250) + 250
-    w = width  || Math.floor(Math.random()*250) + 250
-    root = "http://placekitten.com"
-    root += "/g" if Math.random() > 0.5 # greyscale kittens!
-    return "#{root}/#{h}/#{w}#.png"
-  
-  
-  
+              	response.send "Unable to get cat facts right now."
   
   robot.respond /corgi me/i, (msg) ->
     msg.http("http://corginator.herokuapp.com/random")
@@ -228,8 +205,29 @@ module.exports = (robot) ->
 
     msg.send "#{unflipped} ノ( º _ ºノ)"
   
-  
+  robot.respond /kitten me)/i, (msg) ->
+      msg.send kittenMe()
+    
+  robot.respond /kittens?(?: me)?$/i, (msg) ->
+    msg.send kittenMe()
 
+  robot.respond /kittens?(?: me)? (\d+)(?:[x ](\d+))?$/i, (msg) ->
+    msg.send kittenMe msg.match[1], (msg.match[2] || msg.match[1])
+
+  robot.respond /kitten bomb(?: me)?( \d+)?$/i, (msg) ->
+    kittens = msg.match[1] || 5
+    msg.send(kittenMe()) for i in [1..kittens]
+
+kittenMe = (height, width)->
+  h = height ||  Math.floor(Math.random()*250) + 250
+  w = width  || Math.floor(Math.random()*250) + 250
+  root = "http://placekitten.com"
+  root += "/g" if Math.random() > 0.5 # greyscale kittens!
+  return "#{root}/#{h}/#{w}#.png"
+ 
+ 
+ 
+ 
   # robot.hear /badger/i, (res) ->
   #   res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
   #
