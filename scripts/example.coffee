@@ -39,13 +39,7 @@ module.exports = (robot) ->
   robot.hear /badger/i, (res) ->
     res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
   
-  robot.respond /(fortune)( me)?/i, (msg) ->
-    msg.http('http://www.fortunefortoday.com/getfortuneonly.php')
-       .get() (err, res, body) ->
-         msg.reply body
-  
-  
-  robot.hear /spoon/i, (res) ->
+  robot.hear /spoon/i, (msg) ->
     spoons = ["http://i.imgur.com/47n9l.jpg",
               "http://i.imgur.com/47n9l.jpg",
               "http://i.imgur.com/47n9l.jpg",
@@ -62,7 +56,12 @@ module.exports = (robot) ->
               "http://kindersay.com/files/images/spoon.png",
               "http://i3.kym-cdn.com/entries/icons/original/000/001/013/iamabananawd7.jpg"
             ]
-    res.send msg.random spoons
+    msg.send msg.random spoons
+  
+  robot.respond /(fortune)( me)?/i, (msg) ->
+    msg.http('http://www.fortunefortoday.com/getfortuneonly.php')
+       .get() (err, res, body) ->
+         msg.reply body
   
   robot.hear /bat simplefact/i, (msg) ->
     facts = [
@@ -187,13 +186,13 @@ module.exports = (robot) ->
   
   robot.respond /corgi me/i, (msg) ->
     msg.http("http://corginator.herokuapp.com/random")
-      .get() (err, res, body) ->
+      .get() (err, msg, body) ->
         msg.send JSON.parse(body).corgi
 
   robot.respond /corgi bomb( (\d+))?/i, (msg) ->
     count = msg.match[2] || 5
     msg.http("http://corginator.herokuapp.com/bomb?count=" + count)
-      .get() (err, res, body) ->
+      .get() (err, msg, body) ->
         msg.send corgi for corgi in JSON.parse(body).corgis
   
   robot.respond /(rage )?flip( .*)?$/i, (msg) ->
