@@ -40,9 +40,24 @@ module.exports = (robot) ->
     res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
   
   robot.hear /spoon/i, (msg) ->
-    spoons = ["http://images-cdn.9gag.com/photo/azb7Lxb_700b.jpg"
+    spoons = ["http://i.imgur.com/47n9l.jpg",
+              "http://i.imgur.com/47n9l.jpg",
+              "http://i.imgur.com/47n9l.jpg",
+              "http://i.imgur.com/47n9l.jpg",
+              "http://i.imgur.com/47n9l.jpg",
+              "http://i.imgur.com/47n9l.jpg",
+              "http://i.imgur.com/47n9l.jpg",
+              "https://66.media.tumblr.com/a41e0f5ca59b94f00ab0df2e21902462/tumblr_mjxnjxsUPO1rabxd4o1_500.jpg",
+              "https://img0.etsystatic.com/072/1/10011086/il_214x170.811358134_gi3m.jpg",
+              "http://lusaorganics.typepad.com/.a/6a010535f3a090970c01b7c7f03f50970b-640wi",
+              "https://www.zagat.com/proxy/v1.4?m=image&a=resize&url=https%3A//storage.googleapis.com/zgt-user/philly-littlespoon.jpg&width=640&height=360&key=abbc09b7c840c10937a4db331422c98b",
+              "Hey Insight have you thought about this and ice cream: http://editorial.designtaxi.com/editorial-images/news-ediblespoonmaker190216/2-Edible-Spoon-Maker.jpg",
+              "http://kingofwallpapers.com/spoon/spoon-006.jpg",
+              "http://kindersay.com/files/images/spoon.png",
+              "http://i3.kym-cdn.com/entries/icons/original/000/001/013/iamabananawd7.jpg"
             ]
-    msg.send msg.random spoons
+    # msg.send msg.random spoons
+    msg.send "http://images-cdn.9gag.com/photo/azb7Lxb_700b.jpg"
   
   robot.respond /(fortune)( me)?/i, (msg) ->
     msg.http('http://www.fortunefortoday.com/getfortuneonly.php')
