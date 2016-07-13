@@ -48,12 +48,14 @@ module.exports = (robot) ->
     data = JSON.stringify({
         a: text
     })
+    msg.send "http://attiladobi.com/_add_numbers?#{data}"
     
     msg.http("http://attiladobi.com/_add_numbers?#{data}")
-      .get() (err, msg, body) ->
+      .get() (err, res, body) ->
         if err
           msg.send "ERROR!: #{err}"
           return
+        msg.send body
         msg.send JSON.parse(body).result
   
   
