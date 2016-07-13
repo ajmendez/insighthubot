@@ -42,15 +42,15 @@ module.exports = (robot) ->
   
   robot.hear /!emojify ( .*)?/i, (msg) ->
     text = escape(msg.match[1])
-    msg.send "you said ${text}"
+    msg.send "you said #{text}"
+    
+    
     data = JSON.stringify({
-        a: text,
-        lang: 'en'
+        a: text
     })
     
-    msg.http("http://attiladobi.com/_add_numbers")
-      .header('Content-Type', 'application/json')
-      .post(data) (err, msg, body) ->
+    msg.http("http://attiladobi.com/_add_numbers?#{data}")
+      .get() (err, msg, body) ->
         if err
           msg.send "ERROR!: #{err}"
           return
