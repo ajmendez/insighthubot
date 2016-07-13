@@ -40,12 +40,21 @@ module.exports = (robot) ->
     res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
   
   
-  robot.hear /\/emojify ( .*)?/i, (msg) ->
+  robot.hear /!emojify ( .*)?/i, (msg) ->
     text = escape(msg.match[1])
     msg.send "you said ${text}"
-    # msg.http("http://ATTILA.dobi/emoji")
-    #   .get() (err, msg, body) ->
-    #     msg.send JSON.parse(body).corgi
+    data = JSON.stringify({
+        a: text,
+        lang: 'en'
+    })
+    
+    msg.http("http://attiladobi.com/_add_numbers")
+      .header('Content-Type', 'application/json')
+      .post(data) (err, msg, body) ->
+        if err
+          msg.send "ERROR!: #{err}"
+          return
+        msg.send JSON.parse(body).result
   
   
   
