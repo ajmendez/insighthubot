@@ -39,6 +39,17 @@ module.exports = (robot) ->
   robot.hear /badger/i, (res) ->
     res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
   
+  
+  robot.hear /\/emojify ( .*)?/i, (msg) ->
+    text = escape(msg.match[1])
+    msg.send "you said ${text}"
+    # msg.http("http://ATTILA.dobi/emoji")
+    #   .get() (err, msg, body) ->
+    #     msg.send JSON.parse(body).corgi
+  
+  
+  
+  
   robot.hear /spoon/i, (msg) ->
     spoons = ["http://i.imgur.com/47n9l.jpg",
               "http://i.imgur.com/47n9l.jpg",
