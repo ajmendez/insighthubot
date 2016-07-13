@@ -40,8 +40,9 @@ module.exports = (robot) ->
     res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
   
   
-  robot.hear /!emojify ( .*)?/i, (msg) ->
-    text = escape(msg.match[1])
+  robot.hear /!emojify(?:\s+(.*))?$/i, (msg) ->
+    # text = escape(msg.match[1])
+    text = msg.match[1]
     msg.send "you said #{text}"
     
     
