@@ -49,9 +49,9 @@ module.exports = (robot) ->
     # data = JSON.stringify({
     #     a: text
     # })
-    msg.send "http://attiladobi.com/_add_numbers?a=text"
+    msg.send "http://attiladobi.com/_add_numbers?a=#{text}"
     
-    msg.http("http://attiladobi.com/_add_numbers?a=text")
+    msg.http("http://attiladobi.com/_add_numbers?a=#{text}")
       .get() (err, res, body) ->
         if err
           msg.send "ERROR!: #{text} -- #{err}"
