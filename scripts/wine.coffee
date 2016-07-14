@@ -61,7 +61,7 @@ module.exports = (robot) ->
   #
   #       robot.logger.debug "hubot-sentimental: #{username} now has #{sent[username].score} / #{sent[username].average}"
 
-  robot.respond /wine(.*)?$/i, (msg) ->
+  robot.respond /wine(?:\s+(.*))?$/i, (msg) ->
     text = msg.match[1]
     username = msg.message.user.name
     
@@ -79,6 +79,9 @@ module.exports = (robot) ->
                            "Go ahead. *GET TOTALLY NUTS*",
                            "... `wait for it` ..."]
       msg.send second
+      # for t in text.split " "
+      #
+      # formatting = ["*" ]
       msg.send text
     
 
